@@ -1,20 +1,20 @@
 const db = require('../routes/db-config')
 const jwt = require('jsonwebtoken');
 
-const isLoggedIn = async (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
     if (!req.cookies.userRegistered) return next();
-    try{
-        const decoded = jwt.verify(req.cookies.userRegistered, "SCRETE-KEY");
-        db.query("SELECT * FROM emplyee.emp_info WHERE id=?", [decoded.id], (err,result) =>{
-            if(err) return next();
-            req.emplyee = result[0];
+    try {
+        const decoded = jwt.verify(req.cookies.userRegistered, process.env.SCERET_KEY);
+        db.query("SELECT * FROM users WHERE id = ?", [decoded.id], (err, result) => {
+            if (err) return next();
+            req.user = result[0];
             return next();
-        }   )
+        })
 
-    }catch(err){
-        if(err) return next()
+    } catch (err) {
+        if (err) return next()
     }
-        
+
 }
 
 module.exports = isLoggedIn

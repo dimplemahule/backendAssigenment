@@ -11,46 +11,58 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Home Page</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
-                    <% if(emplyee.status=="ok" ){%>
-                        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    <%if(status == "loggedIn"){%>
+                        <li class="nav-item"><a class="nav-link"  href="/profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link"  href="/logout">Logout</a></li>
                         <%}else{%>
-                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                            <%}%>
+                            <li class="nav-item"><a class="nav-link"  href="/register">Register</a></li>
+                            <li class="nav-item"><a class="nav-link"  href="/login">Login</a></li>
+                    
+                    <%}%>
                 </ul>
+
             </div>
         </div>
     </nav>
+
     <div class="container my-5">
         <div class="card" style="width: 100%;">
             <div class="card-body">
-                <h5 class="card-title">Welcome to the home pages</h5>
+                <%if(status == "loggedIn"){%>
+                <h5 class="card-title">Welcome <%=user.email %></h5>
+                <%}else{%>
+                    <h5 class="card-title">Welcome back</h5>
+                    <%}%>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p>
-                <%if(status=="LoggedIn"){%>
-                    <button class="btn btn-primary"><a herf="/profile" style="color:aliceblue">Profile</a></button>
-                    <button class="btn btn-primary"><a herf="/logout" style="color:aliceblue">Logout</a></button>
-                    <%} else{%>
-                        <button class="btn btn-primary"><a herf="/login" style="color:aliceblue">Login</a></button>
-                        <button class="btn btn-primary"><a herf="/register"
-                                style="color:aliceblue">Register</a></button>
-                        <% } %>
+                    <%if(status == "loggedIn"){%>
+                        <button class="btn btn-primary"><a herf="/profile" style="color: aliceblue; text-decoration: none;">Profile</a></button>
+                        <button class="btn btn-primary"><a herf="/logout" style="color: aliceblue; text-decoration: none;">logout</a></button>
+        
+                        <%}else{%>
+                            <button class="btn btn-primary"><a herf="/login" style="color: aliceblue; text-decoration: none;">Login</a></button>
+                            <button class="btn btn-primary"><a herf="/register" style="color: aliceblue; text-decoration: none;">Register</a></button>
+            
+                            <%}%>
+               
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>

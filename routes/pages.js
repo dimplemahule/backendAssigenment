@@ -1,34 +1,25 @@
 
 const express = require('express');
-const loggedIn = require('../controllers/loggedIn')
+const loggedIn = require('../controllers/loggedIn');
+const logout = require('../controllers/logout');
 const router = express.Router();
 
-router.get('/', (req,res) =>{
-    if(req.emplyee){
-        res.render("index", {status:"LoggedIn", emplyee:req.emplyee})
+router.get('/', loggedIn, (req, res) => {
+    if (req.user) {
+        res.render("index", { status: "LoggedIn", user: req.user })
 
-    }else{
-        res.render("index", {status:"no", emplyee:"nothing"})
+    } else {
+        res.render("index", { status: "no", user: "nothing" })
     }
-   
+
 })
 
-router.get('/register', (req,res) =>{
-    res.sendFile("register.html",{root:"./public"})
+router.get('/register', (req, res) => {
+    res.sendFile("register.html", { root: "./public" })
 })
-router.get('/login', (req,res) =>{
-    res.sendFile('login.html',{root:"./public"})
+router.get('/login', (req, res) => {
+    res.sendFile('login.html', { root: "./public/" })
 })
-
-// app.get('/', (req, res) => {
-//     let sql = "SELECT * FROM emplyee.emp_info";
-//     connection.query(sql, function (err,result) {
-//         if (err)
-//             throw err;
-//         res.send(result)
-
-//     })
-
-// })
+router.get('/logout', logout)
 
 module.exports = router;

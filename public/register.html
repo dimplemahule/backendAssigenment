@@ -11,69 +11,57 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Register Page</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Register</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link active" aria-current="page" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
                     </li>
                 </ul>
+
             </div>
         </div>
     </nav>
+
+
     <div class="container my-5">
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h5 class="card-title">Register form</h5>
-                <form onsubmit="return false" id="form">
+                <form onsubmit="return false;" id="form">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="email" autocomplete="off" required>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
-                          </div>
-                          <div class="mb-3">
-                            <label for="password" class="form-label">Re-enterd-Password</label>
-                            <input type="password" class="form-control" id="password">
-                          </div>
-                        <div class="mb-3">
-                        <label for="firstname" class="form-label">First Name</label>
-                        <input type="firstname" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lastname" class="form-label">Last name</label>
-                        <input type="lastname" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="gender" class="form-label">Gender</label>
-                        <input type="gender" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phonenumber" class="form-label">Phone number</label>
-                        <input type="phonenumber" class="form-control" id="password">
-                    </div> 
-                    <div class="alert alert-danger" role="alert" id="error" style="display: none;"></div>
-                    <div class="alert alert-success" role="alert" id="success" style="display: none;"></div>
-
-                    <button type="submit" class="btn btn-primary">Register</button>
+                            <input type="password" class="form-control" id="password" autocomplete="off" required>
+                        </div>
+                        <div class="alert alert-danger" role="alert" id="error" style="display: none;"></div>
+                        <div class="alert alert-success" role="alert" id="success" style="display: none;"></div>
+                        <button type="submit" class="btn btn-primary">Register</button>
                 </form>
             </div>
         </div>
     </div>
     <script src="./js/register.js"></script>
+
 </body>
 
 </html>
